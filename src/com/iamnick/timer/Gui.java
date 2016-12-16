@@ -5,7 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/*
+ *  Created 12/15/16
+ * @author 1amnick
+ * (c) Nick Vasek
+ * 
+ */
 
 public class Gui implements ActionListener {
 
@@ -14,7 +19,7 @@ public class Gui implements ActionListener {
 	private static boolean killTimer;
 
 	/* GUI Variables */
-	JFrame frame = new JFrame("Fussy Timer");
+	JFrame frame = new JFrame("Fussy Timer");//top of the window to ya!
 	JPanel panel = new JPanel();
 	JPanel panel2 = new JPanel();
 	static JButton start = new JButton("Start!");
@@ -26,12 +31,12 @@ public class Gui implements ActionListener {
 
 	public Gui(){
 		panel.add(inputMinutes);
-		inputMinutes.setText("5");
+		inputMinutes.setText("5");// 5 minute default
 		panel.add(splitter);
 		panel.add(inputSeconds);
-		inputSeconds.setText("00");
+		inputSeconds.setText("00");// and 0 added seconds
 		panel.add(start);
-
+		EndMessage.setText(""); //can be set to whatever for a default 
 
 
 		//panel2
@@ -39,9 +44,9 @@ public class Gui implements ActionListener {
 
 
 		frame.add(panel);
-		frame.add(panel2);
-		frame.setLayout(new FlowLayout());
-		frame.setSize(220, 120);
+		frame.add(panel2); //make sure this bar shows under the time settings
+		frame.setLayout(new FlowLayout()); //i think this is magic
+		frame.setSize(220, 120); //random numbers go here
 		frame.setVisible(true);
 
 
@@ -61,7 +66,7 @@ public class Gui implements ActionListener {
 		return killTimer;
 	}
 	public void startCounter(){
-		(new Thread(new CountUpper())).start();
+		(new Thread(new CounterUpper())).start();
 	}
 
 	public static int getTimeInSeconds() throws NumberFormatException{

@@ -3,8 +3,15 @@ package com.iamnick.timer;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class CountUpper implements Runnable{
+/*
+ *  Created 12/15/16
+ * @author 1amnick
+ * (c) Nick Vasek
+ * 
+ */
 
+public class CounterUpper implements Runnable{
+//its a stupid name i know but who cares
 	int time = 0;
 	@Override
 	public void run() {
@@ -14,13 +21,13 @@ public class CountUpper implements Runnable{
 			try{
 				PrintWriter writer = new PrintWriter("timer.txt", "UTF-8");
 				writer.print(Timer.toTime(time));
-				//System.out.println(time);
+				//System.out.println(time); //debug stuff
 				writer.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000);//i know i probably could use math with system uptime or getting computer time for a more accurate timer but its good enough
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

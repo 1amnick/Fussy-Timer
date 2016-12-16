@@ -3,6 +3,13 @@ package com.iamnick.timer;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/*
+ *  Created 12/15/16
+ * @author 1amnick
+ * (c) Nick Vasek
+ * 
+ */
+
 public class Timer implements Runnable{
 
 	@Override
@@ -14,13 +21,13 @@ public class Timer implements Runnable{
 			try{
 				PrintWriter writer = new PrintWriter("timer.txt", "UTF-8");
 				writer.print(toTime(time));
-				//System.out.println(time);
+				//System.out.println(time); //debug stuff
 				writer.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000);// im sure there is a better way
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -51,11 +58,11 @@ public class Timer implements Runnable{
 	public static String toTime(int seconds){
 		String clocksecs = null;
 		int minutes = seconds / 60;
-		int sec = seconds%60;
-		if(sec < 10){
-			clocksecs = "0" + sec;
+		int temp = seconds%60;
+		if(temp < 10){
+			clocksecs = "0" + temp;//this adds a 0 before the number so the time will look like  4:03 instead of an ugly 4:3
 		}else{
-			clocksecs = "" + sec;
+			clocksecs = "" + temp;
 		}
 		Gui.updateTimer(minutes, clocksecs);
 		return minutes + ":" + clocksecs;
