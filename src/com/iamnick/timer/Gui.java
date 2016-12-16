@@ -23,6 +23,7 @@ public class Gui implements ActionListener {
 	JFrame frame = new JFrame("Fussy Timer");//top of the window to ya!
 	JPanel panel = new JPanel();
 	JPanel panel2 = new JPanel();
+	JPanel panel3 = new JPanel();
 	static JButton start = new JButton("Start!");
 	static JTextField inputMinutes = new JTextField(3);
 	JLabel splitter = new JLabel(":");
@@ -41,22 +42,24 @@ public class Gui implements ActionListener {
 		inputSeconds.setText("00");// and 0 added seconds
 		panel.add(start);
 		EndMessage.setText(""); //can be set to whatever for a default 
-		panel.add(save);
-
+		
+		panel3.add(save);
+		panel3.add(load);
 		
 		
 		//panel2
 		panel2.add(EndMessage);
-		panel2.add(load);
+		
 
 		frame.add(panel);
 		frame.add(panel2); //make sure this bar shows under the time settings
+		frame.add(panel3);//save buttons out of the way
 		frame.setLayout(new FlowLayout()); //i think this is magic
-		frame.setSize(300, 120); //random numbers go here
+		frame.setSize(220, 160); //random numbers go here
 		
 		
 		//load settings here
-		
+		settings.loadSettings();
 		frame.setVisible(true);
 
 

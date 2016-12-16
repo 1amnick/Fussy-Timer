@@ -16,6 +16,9 @@ Features:
   
 -   Count up when input is 0:00
   
+-   save and load settings
+  
+-   Automatically Load Settings on startup  
   
 TODO:
 
@@ -23,7 +26,7 @@ TODO:
 
 -   add in a default end message
 
--   make it remember settings after restart i.e. put in an end message or specific time it should remember it
+-   ~~make it remember settings after restart i.e. put in an end message or specific time it should remember it~~
 
 -   if you see a guy named mikto1000 on the internet go bug him
 

@@ -2,8 +2,7 @@ package com.iamnick.timer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class SettingsManager implements ActionListener {
 
@@ -16,22 +15,34 @@ public class SettingsManager implements ActionListener {
 		if(e.getActionCommand() == "Save"){
 			System.out.println("Saving Settings...");
 			saveSettings();
+		}else if(e.getActionCommand() == "Load"){
+			System.out.println("Loading Settings...");
+			loadSettings();
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 
+	public void loadSettings(){
+		try {
+			BufferedReader loader = new BufferedReader(new FileReader("timersettings.txt"));
+			try {
+				Gui.inputMinutes.setText(loader.readLine());
+				Gui.inputSeconds.setText(loader.readLine());
+				Gui.EndMessage.setText(loader.readLine());
+			} catch (IOException e) {
+				//if there is an error in reading the line
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			//nothing to load do nothing
+			//e.printStackTrace();
+			System.out.println(" Settings file not found.\nCreating File...");
+			saveSettings();
+		}
+		
+	}
+	
 	private void saveSettings() {
 		try{
 			PrintWriter writer = new PrintWriter("timersettings.txt", "UTF-8");
