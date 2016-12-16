@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 /*
  *  Created 12/15/16
  * @author 1amnick
- * (c) Nick Vasek
+ * (cc) by - nc
  * 
  */
 
