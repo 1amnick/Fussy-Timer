@@ -30,6 +30,7 @@ public class SettingsManager implements ActionListener {
 				Gui.inputMinutes.setText(loader.readLine());
 				Gui.inputSeconds.setText(loader.readLine());
 				Gui.EndMessage.setText(loader.readLine());
+				loader.close();
 			} catch (IOException e) {
 				//if there is an error in reading the line
 				e.printStackTrace();
@@ -40,6 +41,7 @@ public class SettingsManager implements ActionListener {
 			System.out.println(" Settings file not found.\nCreating File...");
 			saveSettings();
 		}
+		
 		
 	}
 	

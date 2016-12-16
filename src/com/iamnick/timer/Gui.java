@@ -60,6 +60,14 @@ public class Gui implements ActionListener {
 		
 		//load settings here
 		settings.loadSettings();
+		
+		
+		
+		start.setBackground(Color.GREEN);
+		//start.setForeground(Color.RED);
+		start.setOpaque(true);
+		
+		
 		frame.setVisible(true);
 
 
@@ -113,18 +121,22 @@ public class Gui implements ActionListener {
 				killTimer = false;
 				startCounter();
 				start.setText("Stop!");
+				start.setBackground(Color.RED);
 			}else{
 				killTimer = true;
 				start.setText("Start!");
+				start.setBackground(Color.GREEN);
 			}
 		}else{
 			if(isTimerRunning == false){
 				killTimer = false;
 				startTimer();
 				start.setText("Stop!");
+				start.setBackground(Color.RED);
 			}else{
 				killTimer = true;
 				start.setText("Start!");
+				start.setBackground(Color.GREEN);
 			}
 		}
 	}
