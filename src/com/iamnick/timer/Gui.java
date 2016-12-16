@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
- *  Created 12/15/16
+ * Created 12/15/16
  * @author 1amnick
  * (cc) by - nc
  * 
