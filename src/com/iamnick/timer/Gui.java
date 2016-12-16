@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 
 public class Gui implements ActionListener {
 
+	SettingsManager settings = new SettingsManager();
 	static String endText = "";
 	static boolean isTimerRunning = false;
 	private static boolean killTimer;
@@ -28,6 +29,9 @@ public class Gui implements ActionListener {
 	static JTextField inputSeconds = new JTextField(3);
 
 	static JTextField EndMessage = new JTextField(15);
+	
+	static JButton save = new JButton("Save");
+	static JButton load = new JButton("Load");
 
 	public Gui(){
 		panel.add(inputMinutes);
@@ -37,21 +41,28 @@ public class Gui implements ActionListener {
 		inputSeconds.setText("00");// and 0 added seconds
 		panel.add(start);
 		EndMessage.setText(""); //can be set to whatever for a default 
+		panel.add(save);
 
-
+		
+		
 		//panel2
 		panel2.add(EndMessage);
-
+		panel2.add(load);
 
 		frame.add(panel);
 		frame.add(panel2); //make sure this bar shows under the time settings
 		frame.setLayout(new FlowLayout()); //i think this is magic
-		frame.setSize(220, 120); //random numbers go here
+		frame.setSize(300, 120); //random numbers go here
+		
+		
+		//load settings here
+		
 		frame.setVisible(true);
 
 
 		start.addActionListener(this);
-
+		save.addActionListener(settings);
+		load.addActionListener(settings);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
