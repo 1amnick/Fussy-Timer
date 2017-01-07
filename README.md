@@ -5,6 +5,7 @@ A Countdown timer at the request of a twitch streamer.
 
 Currently writes the time left to a file that is updated every second to be read from an OBS plugin.
 
+#THIS BRANCH HAS A CHATBOT BUILT IN!
 
 Features:
 
