@@ -14,6 +14,18 @@ public class Commands {
 				Chatter.chat("Sorry this command is for gamewisp subscribers only.", writer);
 			}
 		}
+		else if (message[3].equalsIgnoreCase("!togglejoin")){
+			if (DB.findName(message[1], "JoinEvent", "JoinDB")){
+				boolean t = DB.toggleJoin(message[1]);
+				if(t){
+					Chatter.chat("Your join message has been toggled ON", writer);
+				}else{
+					Chatter.chat("Your join message has been toggled OFF", writer);
+				}
+			}else{
+				Chatter.chat("Sorry you must be a regular to enable your join message.", writer);
+			}
+		}
 	}
 
 }

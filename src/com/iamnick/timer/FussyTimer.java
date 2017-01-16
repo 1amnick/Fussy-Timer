@@ -1,9 +1,6 @@
 package com.iamnick.timer;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 
 
@@ -18,6 +15,9 @@ public class FussyTimer {
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
+		
+		PrintStream out = new PrintStream(new FileOutputStream("log.log"));
+		System.setOut(out);
 
 		Gui G = new Gui();
 		Socket socket = new Socket("irc.chat.twitch.tv", 6667);

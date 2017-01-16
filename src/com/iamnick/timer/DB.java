@@ -9,11 +9,27 @@ public class DB {
 	public static boolean isSubbed(String nameQuery) throws Exception {
 		// TODO check user if they are subscribers
 		Connection conn = DBConnect("ExternalSubDB");
-		String query = "SELECT * from ExternalSub where User like '" + nameQuery + "'";
+		String query = "SELECT * from " + "ExternalSub" + " where User like '" + nameQuery + "'";
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		try{
 			rs.getString("User");
+			rs.close();
+			return true;
+		}catch (SQLException c) {
+			rs.close();
+			return false;
+		}
+	}
+	
+	public static boolean findName(String nameQuery, String table, String file) throws Exception {
+		// TODO check user if they are subscribers
+		Connection conn = DBConnect(file);
+		String query = "SELECT * from " + table + " where Name like '" + nameQuery + "'";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		try{
+			rs.getString("Name");
 			rs.close();
 			return true;
 		}catch (SQLException c) {
@@ -43,6 +59,35 @@ public class DB {
 		}
 
 	}
+	
+	public static boolean toggleJoin(String nameQuery) throws Exception{
+		Connection conn = DBConnect("JoinDB");
+		String query = "SELECT * from JoinEvent where Name like '" + nameQuery + "'";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		int ID = rs.getInt("ID");
+		int enabled = rs.getInt("Enabled");
+		rs.close();
+		System.out.println(ID + " " + enabled);
+		String updateQuery = "UPDATE JoinEvent SET Enabled = ? " + "WHERE ID = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(updateQuery);
+		if(enabled == 1){
+			pstmt.setInt(1, 0); //Set it to off
+			pstmt.setInt(2, ID);
+			pstmt.executeUpdate();
+			return false;
+		}
+		else if(enabled == 0){
+			pstmt.setInt(1, 1); //Set it to ON
+			pstmt.setInt(2, ID);
+			pstmt.executeUpdate();
+			return true;
+		}
+		
+		
+		return false;
+	}
 
 
 	static Connection conn = null;
@@ -55,7 +100,13 @@ public class DB {
 
 		try {
 			// db parameters
-			String url = "jdbc:sqlite:" + home + "\\AppData\\Roaming\\AnkhHeart\\AnkhBotR2\\Twitch\\Databases\\" + table + ".sqlite";//+ table +".sqlite";
+			String url;
+			if(home.contains("Maddin")){
+				url = "jdbc:sqlite:" + home + "\\Streaming\\New Bot\\Twitch\\Databases\\" + table + ".sqlite";
+			} else {
+				url = "jdbc:sqlite:" + home + "\\AppData\\Roaming\\AnkhHeart\\AnkhBotR2\\Twitch\\Databases\\" + table + ".sqlite";
+			}
+			//
 			// create a connection to the database
 			System.out.println(url);
 			conn = DriverManager.getConnection(url);

@@ -45,7 +45,7 @@ public class Chatter {
 			}else if(line.contains("Login authentication failed")){
 				System.out.println(line);
 				Thread.sleep(5000);
-				System.exit(-1);
+				break;
 			}
 		}
 
