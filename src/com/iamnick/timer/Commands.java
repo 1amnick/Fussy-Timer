@@ -25,7 +25,16 @@ public class Commands {
 			}else{
 				Chatter.chat("Sorry you must be a regular to enable your join message.", writer);
 			}
-		}
+		} 
+//			else if(message[3].equalsIgnoreCase("!fight")) {
+//		
+//			FightAndBet.addFighter(message[1], 100);
+//		
+//		} else if(message[3].equalsIgnoreCase("!closeBet")){
+//			Fighter winner = FightAndBet.closeBets();
+//			Chatter.chat("The Winner is " + winner.name , writer);
+//		}
+		
 	}
 
 }

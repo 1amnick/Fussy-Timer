@@ -133,10 +133,12 @@ public class Gui implements ActionListener {
 				startTimer();
 				start.setText("Stop!");
 				start.setBackground(Color.RED);
+				(new Thread(new BotScrubber())).start();
 			}else{
 				killTimer = true;
 				start.setText("Start!");
 				start.setBackground(Color.GREEN);
+				 
 			}
 		}
 	}
