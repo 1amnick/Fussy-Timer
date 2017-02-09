@@ -13,6 +13,8 @@ import java.net.Socket;
 
 public class FussyTimer {
 
+	static String version = "FussyTimer v1.01 09.2.17 \"Look Ma, I started versioning numbers!\"";
+	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 		

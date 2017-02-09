@@ -9,15 +9,23 @@ import java.net.Socket;
 
 
 
+
 /*
  * All login info is in TempLoginInfo.java which is just 3 getter methods for oauth account and channel.
  */
 
 public class Chatter {
+	
+	static Socket socket = null;
+	static BufferedWriter writer = null;
+	static BufferedReader reader = null;
 
 	static String twitchChannel;
 	public Chatter(Socket socket, BufferedWriter writer, BufferedReader reader) throws Exception{
 
+		Chatter.socket = socket;
+		Chatter.reader = reader;
+		Chatter.writer = writer;
 
 		SettingsManager chat = new SettingsManager();
 		chat.loadChatBotSettings();
@@ -82,7 +90,7 @@ public class Chatter {
 
 	
 	
-	public static void chat(String message, BufferedWriter writer) throws IOException{
+	public static void chat(String message) throws IOException{
 
 		writer.write("PRIVMSG " + twitchChannel + " :" + message + "\r\n");
 		writer.flush();
