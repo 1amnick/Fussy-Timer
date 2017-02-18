@@ -25,16 +25,12 @@ Chat Functionality:
 
 -   !changejoin allows users to change join message to their preferred message.
 -   !togglejoin allows all users to turn off or on their greeting.
--   !!timeout a funny command i put in on a whim.
+-   !timeout a funny command i put in on a whim.
 -   !aboutbot shows info about the version.
   
 TODO:
 
 -   Add in a chroma keyable text for OBS or other streaming software
-
--   add in a default end message
-
--   ~~make it remember settings after restart i.e. put in an end message or specific time it should remember it~~
 
 -   if you see a guy named mikto1000 on the internet go bug him
 
