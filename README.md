@@ -20,6 +20,13 @@ Features:
 -   save and load settings
   
 -   Automatically Load Settings on startup  
+
+Chat Functionality:
+
+-   !changejoin allows users to change join message to their preferred message.
+-   !togglejoin allows all users to turn off or on their greeting.
+-   !!timeout a funny command i put in on a whim.
+-   !aboutbot shows info about the version.
   
 TODO:
 
