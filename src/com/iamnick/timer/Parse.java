@@ -28,6 +28,12 @@ public class Parse {
 		
 		return tokens;
 	}
+
+
+	public static String[] spaced(String message) {
+		// TODO Auto-generated method stub
+		return message.split("[ ]");
+	}
 	
 	
 }

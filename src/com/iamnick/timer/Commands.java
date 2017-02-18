@@ -27,6 +27,18 @@ public class Commands {
 			}
 		} else if(message[3].equalsIgnoreCase("!aboutbot")){
 			Chatter.chat(FussyTimer.version);
+		}else if(message[3].startsWith("!timeout")){
+			String[] tokens = Parse.spaced(message[3]);
+			int t = 0;
+			try{
+				t = Integer.parseInt(tokens[2]);
+				Chatter.chat(message[1] +"! How dare you try to time out " + tokens[1] + "!");
+				Thread.sleep(500);
+				Chatter.chat("Let us know how it feels to be timed out for " + t + " seconds instead.");
+				Chatter.chat(".timeout " + message[1] + " " + t + " You deserved it." );
+			}catch(Exception e){
+				//fail,do nothing
+			}
 		}
 //			else if(message[3].equalsIgnoreCase("!fight")) {
 //		
@@ -38,5 +50,7 @@ public class Commands {
 //		}
 		
 	}
+
+
 
 }
