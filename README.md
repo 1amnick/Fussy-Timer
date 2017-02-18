@@ -30,6 +30,8 @@ Chat Functionality:
   
 TODO:
 
+-   Connect this git to discord for updates.
+
 -   Add in a chroma keyable text for OBS or other streaming software
 
 -   if you see a guy named mikto1000 on the internet go bug him
