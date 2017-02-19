@@ -5,7 +5,7 @@ A Countdown timer at the request of a twitch streamer.
 
 Currently writes the time left to a file that is updated every second to be read from an OBS plugin.
 
-#THIS BRANCH HAS A CHATBOT BUILT IN!
+The Chatbot has been merged into the main branch as I think development has reached a point where I deemed pointless.
 
 Features:
 
@@ -23,14 +23,16 @@ Features:
 
 Chat Functionality:
 
+This bot is designed to work with twitch and ankhbot.
+
 -   !changejoin allows users to change join message to their preferred message.
 -   !togglejoin allows all users to turn off or on their greeting.
--   !timeout a funny command i put in on a whim.
+-   !timeout a funny command I put in on a whim. to disable this from actually timing out someone remove mod powers from bot.
 -   !aboutbot shows info about the version.
   
 TODO:
 
--   Connect this git to discord for updates.
+-   ~~~Connect this git to discord for updates.~~~
 
 -   Add in a chroma keyable text for OBS or other streaming software
 
