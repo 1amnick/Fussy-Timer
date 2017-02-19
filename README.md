@@ -32,7 +32,7 @@ This bot is designed to work with twitch and ankhbot.
   
 TODO:
 
--   ~~~Connect this git to discord for updates.~~~
+-   ~~~~Connect this git to discord for updates.~~~~
 
 -   Add in a chroma keyable text for OBS or other streaming software
 
