@@ -16,10 +16,7 @@ public class SettingsManager implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(e.getActionCommand());
-
-
 		if(e.getActionCommand() == "Save"){
 			System.out.println("Saving Settings...");
 			saveSettings();
@@ -27,8 +24,6 @@ public class SettingsManager implements ActionListener {
 			System.out.println("Loading Settings...");
 			loadSettings();
 		}
-
-
 	}
 
 	public void loadSettings(){
@@ -49,8 +44,6 @@ public class SettingsManager implements ActionListener {
 			System.out.println(" Settings file not found.\nCreating File...");
 			saveSettings();
 		}
-
-
 	}
 
 	private void saveSettings() {
@@ -91,6 +84,7 @@ public class SettingsManager implements ActionListener {
 				writer.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
+				//it was a miscarriage
 			}
 
 
@@ -115,6 +109,7 @@ public class SettingsManager implements ActionListener {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.print(e);
 			return "Unable to check for a newer version. BibleThump You can check manually @ https://git.io/vDFwj";
 		}
 	}

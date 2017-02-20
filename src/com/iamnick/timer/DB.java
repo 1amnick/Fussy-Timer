@@ -124,6 +124,7 @@ public class DB {
 				Files.write(Paths.get("resetlog.txt"), message.getBytes(), StandardOpenOption.APPEND);
 				
 			}catch (IOException e) {
+				e.printStackTrace();
 				System.out.println(e.getMessage());
 			}
 			String updateQuery = "UPDATE CurrencyUser SET Points = ? " + "WHERE Name = ?";
@@ -178,6 +179,7 @@ public class DB {
 			System.out.println("Connected to SQLite Database");
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		} 
 
