@@ -3,6 +3,8 @@ package com.iamnick.timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.URL;
+import java.util.Scanner;
 
 public class SettingsManager implements ActionListener {
 
@@ -90,11 +92,31 @@ public class SettingsManager implements ActionListener {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			
-			
+
+
 		}
 
 
+	}
+	public static String checkForUpdates(){
+		URL url;
+		try {
+			url = new URL("https://raw.githubusercontent.com/1amnick/Fussy-Timer/master/version.txt");
+
+			Scanner s = new Scanner(url.openStream());
+			Double latest = s.nextDouble();
+			s.close();
+			if(latest > FussyTimer.versionNumber){
+				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v"+latest +" Go ask @1amNick for a copy or download @ https://git.io/vDFwj";
+				return yes;
+			}else {
+				return "You have the latest version SeemsGood";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Unable to check for a newer version. BibleThump You can check manually @ https://git.io/vDFwj";
+		}
 	}
 
 	public String getOAUTH() {
