@@ -107,7 +107,7 @@ public class SettingsManager implements ActionListener {
 			Double latest = s.nextDouble();
 			s.close();
 			if(latest > FussyTimer.versionNumber){
-				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v"+latest +" Go ask @1amNick for a copy or download @ https://git.io/vDFwj";
+				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v"+latest +" Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
 				return yes;
 			}else {
 				return "You have the latest version SeemsGood";
