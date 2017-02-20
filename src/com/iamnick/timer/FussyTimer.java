@@ -16,9 +16,9 @@ public class FussyTimer {
 	
 	//remember to change these numbers incrementally Kappa
 	
-	static Double versionNumber = 1.03;
+	static Double versionNumber = 1.04;
 	//make sure you change the version.txt file to fit and comply with FDC and HBP standards.
-	static String version = "FussyTimer v"+versionNumber+" 20.2.17 \"dQw4w9WgXcQ Edition\" With !timeout as the command du jour. More info at https://git.io/vDFwj";
+	static String version = "FussyTimer v"+versionNumber+" 20.2.17 The \"have you tried turning it off and on again?\" Edition. More info at https://git.io/vDFwj";
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
