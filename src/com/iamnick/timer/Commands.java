@@ -26,8 +26,7 @@ public class Commands {
 				Chatter.chat("Sorry you must be a regular to enable your join message.");
 			}
 		} else if(message[3].equalsIgnoreCase("!aboutbot")){
-			Chatter.chat(FussyTimer.version);
-			Chatter.chat(SettingsManager.checkForUpdates());
+			Chatter.chat(FussyTimer.version + " " +SettingsManager.checkForUpdates());
 		}else if(message[3].startsWith("!timeout")){
 			String[] tokens = Parse.spaced(message[3]);
 			int t = 0;

@@ -96,9 +96,12 @@ public class SettingsManager implements ActionListener {
 		URL url;
 		try {
 			url = new URL("https://raw.githubusercontent.com/1amnick/Fussy-Timer/master/version.txt");
-
+			
+			double latest = 1337.1337;
 			Scanner s = new Scanner(url.openStream());
-			Double latest = s.nextDouble();
+			Thread.sleep(100);
+			latest = s.nextDouble();
+			Thread.sleep(100);
 			s.close();
 			if(latest > FussyTimer.versionNumber){
 				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v"+latest +" Go ask @1amNick for a copy or download @ https://git.io/vDF6z";

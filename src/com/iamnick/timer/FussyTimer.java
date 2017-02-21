@@ -23,10 +23,9 @@ public class FussyTimer {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 		
-		PrintStream out = new PrintStream(new FileOutputStream("chatandstuff.log"));
-		PrintStream err = new PrintStream(new FileOutputStream("errorsandnightmares.log"));
+		PrintStream out = new PrintStream(new FileOutputStream("log.log"));
 		System.setOut(out);
-		System.setErr(err);
+		System.setErr(out);
 		
 		Gui G = new Gui();
 		Socket socket = new Socket("irc.chat.twitch.tv", 6667);
