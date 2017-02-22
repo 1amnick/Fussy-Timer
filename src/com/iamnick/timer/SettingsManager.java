@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class SettingsManager implements ActionListener {
@@ -98,7 +99,8 @@ public class SettingsManager implements ActionListener {
 			url = new URL("https://raw.githubusercontent.com/1amnick/Fussy-Timer/master/version.txt");
 			
 			double latest = 1337.1337;
-			Scanner s = new Scanner(url.openStream());
+			@SuppressWarnings("resource")
+			Scanner s = new Scanner(url.openStream()).useLocale(Locale.US);
 			Thread.sleep(100);
 			latest = s.nextDouble();
 			Thread.sleep(100);
