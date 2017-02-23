@@ -87,11 +87,7 @@ public class SettingsManager implements ActionListener {
 				e1.printStackTrace();
 				//it was a miscarriage
 			}
-
-
 		}
-
-
 	}
 	public static String checkForUpdates(){
 		URL url;
