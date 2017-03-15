@@ -59,7 +59,7 @@ public class DB {
 			pstmt.executeUpdate();
 		}catch (SQLiteException e){
 			e.printStackTrace();
-
+			
 		}
 
 	}
@@ -175,7 +175,7 @@ public class DB {
 		Statement stmt2 = conn.createStatement();
 		ResultSet rs2 = stmt2.executeQuery(queryRank);
 		Rank = rs2.getInt("count(*)");
-		rs.close();
+		rs2.close();
 		String queryAbove = "SELECT Name,Points FROM CurrencyUser WHERE Points > " + Points + " ORDER BY Points ASC";
 		Statement stmt3 = conn.createStatement();
 		ResultSet rs3 = stmt3.executeQuery(queryAbove);
@@ -186,17 +186,17 @@ public class DB {
 			int lPoints;
 			lName = rs3.getString("Name");
 			lPoints = rs3.getInt("Points");
-			String line = "#" + (Rank - i + 1) + " " + lName + " (" + lPoints + ")" ;
+			String line = "#" + (Rank - i - 2) + " " + lName + " (" + lPoints + ")" ;
 			stack.add(line);
 			rs3.next();
 		}
-		rs.close();
+		rs3.close();
 		String out = "Your rank on the ladder is as follows: ";
 		for(int i = 0;i<5;i++){
 			out = out + " - " + stack.pop();
 		}
 		
-		out = out + " - " + "#" + (Rank + 1) + " " + Name + " (" + Points + ")" ;
+		out = out + " - " + "#" + (Rank - 2) + " " + Name + " (" + Points + ")" ;
 		
 		
 		String queryBelow = "SELECT Name,Points FROM CurrencyUser WHERE Points < " + Points + " ORDER BY Points DESC";
@@ -208,11 +208,11 @@ public class DB {
 			int lPoints;
 			lName = rs4.getString("Name");
 			lPoints = rs4.getInt("Points");
-			out =out + " - " + "#" + (Rank + i + 1) + " " + lName + " (" + lPoints + ")" ;
+			out =out + " - " + "#" + (Rank + i - 2) + " " + lName + " (" + lPoints + ")" ;
 
 			rs4.next();
 		}
-		
+		rs4.close();
 		
 		
 		return out;
@@ -220,10 +220,14 @@ public class DB {
 		
 		
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
-		return null;
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "Your rank is either too high or something went wrong";
 	}
 
 
