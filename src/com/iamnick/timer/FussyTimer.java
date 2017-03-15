@@ -16,14 +16,14 @@ public class FussyTimer {
 	
 	//remember to change these numbers incrementally Kappa
 	
-	static double versionNumber = 1.05;
+	static double versionNumber = 1.06;
 	//make sure you change the version.txt file to fit and comply with FDC and HBP standards.
-	static String version = "FussyTimer v"+versionNumber+" 22.2.17 The \"I, eat, commas, for, breakfast,\" Edition. More info at https://git.io/vDFwj";
+	static String version = "FussyTimer v" + versionNumber + " 3/14/17 The \"FREEDOM Based \u03C0 Day\" Edition. More info at https://git.io/vDFwj";
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 	
-		version.replaceAll(".", ",");
+
 		PrintStream out = new PrintStream(new FileOutputStream("log.log"));
 		System.setOut(out);
 		System.setErr(out);

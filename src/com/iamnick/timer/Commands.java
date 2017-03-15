@@ -39,15 +39,12 @@ public class Commands {
 			}catch(Exception e){
 				//fail,do nothing
 			}
+		}else if (message[3].equalsIgnoreCase("!fuzzladder")){
+			// SELECT Name,Points FROM CurrencyUser WHERE Points > 1344 ORDER BY Points
+			// SELECT count(*) FROM CurrencyUser WHERE Points > 1345 ORDER BY Points
+			Chatter.chat(DB.getLadderFuzz(message[1]));
 		}
-//			else if(message[3].equalsIgnoreCase("!fight")) {
-//		
-//			FightAndBet.addFighter(message[1], 100);
-//		
-//		} else if(message[3].equalsIgnoreCase("!closeBet")){
-//			Fighter winner = FightAndBet.closeBets();
-//			Chatter.chat("The Winner is " + winner.name , writer);
-//		}
+
 		
 	}
 
