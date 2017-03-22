@@ -43,6 +43,10 @@ public class Commands {
 			// SELECT Name,Points FROM CurrencyUser WHERE Points > 1344 ORDER BY Points
 			// SELECT count(*) FROM CurrencyUser WHERE Points > 1345 ORDER BY Points
 			Chatter.chat(DB.getLadderFuzz(message[1]));
+		}else if (message[3].equalsIgnoreCase("!timeladder")){
+			// SELECT Name,Points FROM CurrencyUser WHERE Points > 1344 ORDER BY Points
+			// SELECT count(*) FROM CurrencyUser WHERE Points > 1345 ORDER BY Points
+			Chatter.chat(DB.getLadderTime(message[1]));
 		}
 
 		

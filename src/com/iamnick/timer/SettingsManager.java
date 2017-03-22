@@ -99,10 +99,9 @@ public class SettingsManager implements ActionListener {
 			Scanner s = new Scanner(url.openStream()).useLocale(Locale.US);
 			Thread.sleep(100);
 			latest = s.nextDouble();
-			Thread.sleep(100);
 			s.close();
 			if(latest > FussyTimer.versionNumber){
-				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v"+latest +" Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
+				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v" + latest + " Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
 				return yes;
 			}else {
 				return "You have the latest version SeemsGood";
