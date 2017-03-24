@@ -16,7 +16,7 @@ public class FussyTimer {
 	
 	//remember to change these numbers incrementally Kappa
 	
-	static double versionNumber = 1.062;
+	static double versionNumber = 1.063;
 	//make sure you change the version.txt file to fit and comply with FDC and HBP standards.
 	static String version = "FussyTimer v" + versionNumber + " 22.3.17 The \"I'm climbing up the ladder\" Edition. More info at https://git.io/vDFwj";
 	

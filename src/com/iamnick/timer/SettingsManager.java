@@ -95,13 +95,19 @@ public class SettingsManager implements ActionListener {
 			url = new URL("https://raw.githubusercontent.com/1amnick/Fussy-Timer/master/version.txt");
 			
 			double latest = 1337.1337;
+			String upcoming = "";
 			@SuppressWarnings("resource")
 			Scanner s = new Scanner(url.openStream()).useLocale(Locale.US);
 			Thread.sleep(100);
 			latest = s.nextDouble();
+			try{
+			upcoming = s.nextLine();
+			}catch (Exception e){
+				upcoming = "";
+			}
 			s.close();
 			if(latest > FussyTimer.versionNumber){
-				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v" + latest + " Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
+				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v" + latest + " " + upcoming + " Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
 				return yes;
 			}else {
 				return "You have the latest version SeemsGood";
