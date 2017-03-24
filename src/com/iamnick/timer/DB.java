@@ -187,7 +187,7 @@ public class DB {
 			float ladderMinutes;
 			ladderName = rs3.getString("Name");
 			ladderMinutes = rs3.getInt("MinutesWatched");
-			String line = "#" + (Rank - i - 2) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
+			String line = "#" + (Rank - i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
 			stack.add(line);
 			rs3.next();
 		}
@@ -197,7 +197,7 @@ public class DB {
 			out = out + " - " + stack.pop();
 		}
 		
-		out = out + " - " + "#" + (Rank - 2) + " " + Name + " (" + truncate(minutes) + ")" ;
+		out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + truncate(minutes) + ")" ;
 		
 		
 		String queryBelow = "SELECT Name,MinutesWatched FROM CurrencyUser WHERE MinutesWatched < " + minutes + " ORDER BY MinutesWatched DESC";
@@ -209,7 +209,7 @@ public class DB {
 			float ladderMinutes;
 			ladderName = rs4.getString("Name");
 			ladderMinutes = rs4.getInt("MinutesWatched");
-			out = out + " - " + "#" + (Rank + i - 2) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
+			out = out + " - " + "#" + (Rank + i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
 
 			rs4.next();
 		}
@@ -275,7 +275,7 @@ public class DB {
 			int lPoints;
 			lName = rs3.getString("Name");
 			lPoints = rs3.getInt("Points");
-			String line = "#" + (Rank - i - 2) + " " + lName + " (" + lPoints + ")" ;
+			String line = "#" + (Rank - i - 1) + " " + lName + " (" + lPoints + ")" ;
 			stack.add(line);
 			rs3.next();
 		}
@@ -285,7 +285,7 @@ public class DB {
 			out = out + " - " + stack.pop();
 		}
 		
-		out = out + " - " + "#" + (Rank - 2) + " " + Name + " (" + Points + ")" ;
+		out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + Points + ")" ;
 		
 		
 		String queryBelow = "SELECT Name,Points FROM CurrencyUser WHERE Points < " + Points + " ORDER BY Points DESC";
@@ -297,7 +297,7 @@ public class DB {
 			int lPoints;
 			lName = rs4.getString("Name");
 			lPoints = rs4.getInt("Points");
-			out =out + " - " + "#" + (Rank + i - 2) + " " + lName + " (" + lPoints + ")" ;
+			out =out + " - " + "#" + (Rank + i - 1) + " " + lName + " (" + lPoints + ")" ;
 
 			rs4.next();
 		}
