@@ -16,17 +16,17 @@ public class FussyTimer {
 	
 	//remember to change these numbers incrementally Kappa
 	
-	static double versionNumber = 1.063;
+	static double versionNumber = 1.064;//when should i change the major number?
 	//make sure you change the version.txt file to fit and comply with FDC and HBP standards.
-	static String version = "FussyTimer v" + versionNumber + " 22.3.17 The \"I'm climbing up the ladder\" Edition. More info at https://git.io/vDFwj";
+	static String version = "FussyTimer v" + versionNumber + " 26.3.17 The \"You cant be too high\" Edition. More info at https://git.io/vDFwj";
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 	
 
-		PrintStream out = new PrintStream(new FileOutputStream("log.log"));
-		System.setOut(out);
-		System.setErr(out);
+//		PrintStream out = new PrintStream(new FileOutputStream("log.log"));
+//		System.setOut(out);
+//		System.setErr(out);
 		
 		Gui G = new Gui();
 		Socket socket = new Socket("irc.chat.twitch.tv", 6667);

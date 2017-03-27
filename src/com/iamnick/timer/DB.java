@@ -59,7 +59,7 @@ public class DB {
 			pstmt.executeUpdate();
 		}catch (SQLiteException e){
 			e.printStackTrace();
-			
+
 		}
 
 	}
@@ -122,9 +122,9 @@ public class DB {
 			String message = "Resetting " + Name + " removing " + Points + " fuzzes and " + Hours + " hours.\n";
 			System.out.print(message);
 			try {
-				
+
 				Files.write(Paths.get("resetlog.txt"), message.getBytes(), StandardOpenOption.APPEND);
-				
+
 			}catch (IOException e) {
 				e.printStackTrace();
 				System.out.println(e.getMessage());
@@ -137,24 +137,24 @@ public class DB {
 			pstmt.setString(2, nameQuery);
 			pstmt.executeUpdate();
 
-			
+
 			String updateQuery2= "UPDATE CurrencyUser SET Hours = ? " + "WHERE Name = ?";
 
 			PreparedStatement pstmt2 = conn.prepareStatement(updateQuery2);
 
-			
+
 			pstmt2.setString(1, "00:00:00");
 			pstmt2.setString(2, nameQuery);
 			pstmt2.executeUpdate();
-			
+
 		} catch (SQLException e){
 			//name does not exist do nothing
 			//e.printStackTrace(); /*uncomment to debug weird stuff */
-		
+
 		}
 	}
-	
-	
+
+
 	public static String getLadderTime(String nameQuery) {
 		//#1 fjollefjols (49483) - #2 mikto1000 (43736) - #3 ghost1988nl (34324) - #4 quarkdragon (21470) - #5 1amnick (20577) - #6 kosumo_ (20139) - #7 theunamusedfox (17679) - #8 mrgamy (16558) - #9 amazing_couchpotato (14768) - #10 chemienerd1999 (14355) -
 		// SELECT Name,Points FROM CurrencyUser WHERE Points > 1344 ORDER BY Points
@@ -162,64 +162,64 @@ public class DB {
 		float minutes = 0;
 		int Rank = 0;
 		String Name = "";
-		
+
 		Connection conn = DBConnect("CurrencyDB");
 		String queryPoints = "SELECT MinutesWatched,Name from CurrencyUser where Name = '" + nameQuery + "'";
-		
-		try {
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(queryPoints);
-		minutes = rs.getInt("MinutesWatched");
-		Name = rs.getString("Name");
-		rs.close();
-		String queryRank = "SELECT count(*) FROM CurrencyUser WHERE MinutesWatched > " + minutes + " ORDER BY MinutesWatched";
-		Statement stmt2 = conn.createStatement();
-		ResultSet rs2 = stmt2.executeQuery(queryRank);
-		Rank = rs2.getInt("count(*)");
-		rs2.close();
-		String queryAbove = "SELECT Name,MinutesWatched FROM CurrencyUser WHERE MinutesWatched > " + minutes + " ORDER BY MinutesWatched ASC";
-		Statement stmt3 = conn.createStatement();
-		ResultSet rs3 = stmt3.executeQuery(queryAbove);
-		Stack<String> stack = new Stack<String>();
-		
-		for(int i =0;i<=5;i++){
-			String ladderName;
-			float ladderMinutes;
-			ladderName = rs3.getString("Name");
-			ladderMinutes = rs3.getInt("MinutesWatched");
-			String line = "#" + (Rank - i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
-			stack.add(line);
-			rs3.next();
-		}
-		rs3.close();
-		String out = "Your rank on the ladder is as follows: ";
-		for(int i = 0;i<5;i++){
-			out = out + " - " + stack.pop();
-		}
-		
-		out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + truncate(minutes) + ")" ;
-		
-		
-		String queryBelow = "SELECT Name,MinutesWatched FROM CurrencyUser WHERE MinutesWatched < " + minutes + " ORDER BY MinutesWatched DESC";
-		Statement stmt4 = conn.createStatement();
-		ResultSet rs4 = stmt4.executeQuery(queryBelow);
-		
-		for(int i=1;i<=5;i++){
-			String ladderName;
-			float ladderMinutes;
-			ladderName = rs4.getString("Name");
-			ladderMinutes = rs4.getInt("MinutesWatched");
-			out = out + " - " + "#" + (Rank + i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
 
-			rs4.next();
-		}
-		rs4.close();
-		
-		
-		return out;
-		
-		
-		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(queryPoints);
+			minutes = rs.getInt("MinutesWatched");
+			Name = rs.getString("Name");
+			rs.close();
+			String queryRank = "SELECT count(*) FROM CurrencyUser WHERE MinutesWatched > " + minutes + " ORDER BY MinutesWatched";
+			Statement stmt2 = conn.createStatement();
+			ResultSet rs2 = stmt2.executeQuery(queryRank);
+			Rank = rs2.getInt("count(*)");
+			rs2.close();
+			String queryAbove = "SELECT Name,MinutesWatched FROM CurrencyUser WHERE MinutesWatched > " + minutes + " ORDER BY MinutesWatched ASC";
+			Statement stmt3 = conn.createStatement();
+			ResultSet rs3 = stmt3.executeQuery(queryAbove);
+			Stack<String> stack = new Stack<String>();
+
+			for(int i =0;i<=5;i++){
+				String ladderName;
+				float ladderMinutes;
+				ladderName = rs3.getString("Name");
+				ladderMinutes = rs3.getInt("MinutesWatched");
+				String line = "#" + (Rank - i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
+				stack.add(line);
+				rs3.next();
+			}
+			rs3.close();
+			String out = "Your rank on the ladder is as follows: ";
+			for(int i = 0;i<5;i++){
+				out = out + " - " + stack.pop();
+			}
+
+			out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + truncate(minutes) + ")" ;
+
+
+			String queryBelow = "SELECT Name,MinutesWatched FROM CurrencyUser WHERE MinutesWatched < " + minutes + " ORDER BY MinutesWatched DESC";
+			Statement stmt4 = conn.createStatement();
+			ResultSet rs4 = stmt4.executeQuery(queryBelow);
+
+			for(int i=1;i<=5;i++){
+				String ladderName;
+				float ladderMinutes;
+				ladderName = rs4.getString("Name");
+				ladderMinutes = rs4.getInt("MinutesWatched");
+				out = out + " - " + "#" + (Rank + i - 1) + " " + ladderName + " (" + truncate(ladderMinutes) + ")" ;
+
+				rs4.next();
+			}
+			rs4.close();
+
+
+			return out;
+
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -232,17 +232,17 @@ public class DB {
 	}
 
 	public static String truncate(float F){
-		
+
 		String out = "";
 		float flo = F/60;
 		out = out + flo;
 		String[] temp = out.split("[.]");
 		out = temp[0] + "." + temp[1].substring(0, 1);
-		
-		
+
+
 		return out;
 	}
-	
+
 	public static String getLadderFuzz(String nameQuery) {
 		//#1 fjollefjols (49483) - #2 mikto1000 (43736) - #3 ghost1988nl (34324) - #4 quarkdragon (21470) - #5 1amnick (20577) - #6 kosumo_ (20139) - #7 theunamusedfox (17679) - #8 mrgamy (16558) - #9 amazing_couchpotato (14768) - #10 chemienerd1999 (14355) -
 		// SELECT Name,Points FROM CurrencyUser WHERE Points > 1344 ORDER BY Points
@@ -250,64 +250,66 @@ public class DB {
 		int Points = 0;
 		int Rank = 0;
 		String Name = "";
-		
+
 		Connection conn = DBConnect("CurrencyDB");
 		String queryPoints = "SELECT Points,Name from CurrencyUser where Name = '" + nameQuery + "'";
-		
-		try {
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(queryPoints);
-		Points = rs.getInt("Points");
-		Name = rs.getString("Name");
-		rs.close();
-		String queryRank = "SELECT count(*) FROM CurrencyUser WHERE Points > " + Points + " ORDER BY Points";
-		Statement stmt2 = conn.createStatement();
-		ResultSet rs2 = stmt2.executeQuery(queryRank);
-		Rank = rs2.getInt("count(*)");
-		rs2.close();
-		String queryAbove = "SELECT Name,Points FROM CurrencyUser WHERE Points > " + Points + " ORDER BY Points ASC";
-		Statement stmt3 = conn.createStatement();
-		ResultSet rs3 = stmt3.executeQuery(queryAbove);
-		Stack<String> stack = new Stack<String>();
-		
-		for(int i =0;i<=5;i++){
-			String lName;
-			int lPoints;
-			lName = rs3.getString("Name");
-			lPoints = rs3.getInt("Points");
-			String line = "#" + (Rank - i - 1) + " " + lName + " (" + lPoints + ")" ;
-			stack.add(line);
-			rs3.next();
-		}
-		rs3.close();
-		String out = "Your rank on the ladder is as follows: ";
-		for(int i = 0;i<5;i++){
-			out = out + " - " + stack.pop();
-		}
-		
-		out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + Points + ")" ;
-		
-		
-		String queryBelow = "SELECT Name,Points FROM CurrencyUser WHERE Points < " + Points + " ORDER BY Points DESC";
-		Statement stmt4 = conn.createStatement();
-		ResultSet rs4 = stmt4.executeQuery(queryBelow);
-		
-		for(int i=1;i<=5;i++){
-			String lName;
-			int lPoints;
-			lName = rs4.getString("Name");
-			lPoints = rs4.getInt("Points");
-			out =out + " - " + "#" + (Rank + i - 1) + " " + lName + " (" + lPoints + ")" ;
 
-			rs4.next();
-		}
-		rs4.close();
-		
-		
-		return out;
-		
-		
-		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(queryPoints);
+			Points = rs.getInt("Points");
+			Name = rs.getString("Name");
+			rs.close();
+			String queryRank = "SELECT count(*) FROM CurrencyUser WHERE Points > " + Points + " ORDER BY Points";
+			Statement stmt2 = conn.createStatement();
+			ResultSet rs2 = stmt2.executeQuery(queryRank);
+			Rank = rs2.getInt("count(*)");
+			rs2.close();
+			String queryAbove = "SELECT Name,Points FROM CurrencyUser WHERE Points > " + Points + " ORDER BY Points ASC";
+			Statement stmt3 = conn.createStatement();
+			ResultSet rs3 = stmt3.executeQuery(queryAbove);
+			Stack<String> stack = new Stack<String>();
+			int t = 0;
+			while(t<=5 && !rs3.isClosed()){//&& t <=5 ){
+				String lName;
+				int lPoints;
+				lName = rs3.getString("Name");
+				lPoints = rs3.getInt("Points");
+				String line = "#" + (Rank - t - 1) + " " + lName + " (" + lPoints + ")" ;
+				stack.add(line);
+				rs3.next();
+				t++;
+			}
+			rs3.close();
+			String out = "Your rank on the ladder is as follows: ";
+			while(stack.size()>1){
+				out = out + " - " + stack.pop();
+			}
+
+			out = out + " - " + "#" + (Rank - 1) + " " + Name + " (" + Points + ")" ;
+
+
+			String queryBelow = "SELECT Name,Points FROM CurrencyUser WHERE Points < " + Points + " ORDER BY Points DESC";
+			Statement stmt4 = conn.createStatement();
+			ResultSet rs4 = stmt4.executeQuery(queryBelow);
+
+			for(int i=1;i<=5;i++){
+				rs4.next();
+				String lName;
+				int lPoints;
+				lName = rs4.getString("Name");
+				lPoints = rs4.getInt("Points");
+				out =out + " - " + "#" + (Rank + i - 1) + " " + lName + " (" + lPoints + ")" ;
+
+//				rs4.next();
+			}
+			rs4.close();
+
+			stack.clear();
+			return out;
+
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
