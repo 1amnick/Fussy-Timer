@@ -100,11 +100,9 @@ public class SettingsManager implements ActionListener {
 			Scanner s = new Scanner(url.openStream()).useLocale(Locale.US);
 			Thread.sleep(100);
 			latest = s.nextDouble();
-			try{
+			s.nextLine();
 			upcoming = s.nextLine();
-			}catch (Exception e){
-				upcoming = "";
-			}
+
 			s.close();
 			if(latest > FussyTimer.versionNumber){
 				String yes = "There is an update! You have v" + FussyTimer.versionNumber + " and the latest is v" + latest + " " + upcoming + " Go ask @1amNick for a copy or download @ https://git.io/vDF6z";
